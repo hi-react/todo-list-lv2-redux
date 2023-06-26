@@ -8,6 +8,7 @@ import store from "./redux/config/configStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  // redux 환경으로 App 컴포넌트를 감싸주자! -> store 이용 가능하도록!
   <Provider store={store}>
     <App />
   </Provider>

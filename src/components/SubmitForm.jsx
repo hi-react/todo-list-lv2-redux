@@ -1,25 +1,20 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // action creator import
 import { addTodo } from "../redux/modules/todo";
 import { styled } from "styled-components";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "react-uuid";
 
 const SubmitForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  // store에서 값 가져오기
-  const todo = useSelector((state) => state.todo);
-  console.log(todo);
 
   // dispatch도 가져와야지
   const dispatch = useDispatch();
 
   // Add 버튼
   const addTodoItemHandler = (event) => {
-    event.preventDefault();
-    // return을 해주지 않으면, 모두 입력해달라는 알람이 뜨고도 빈 카드를 그대로 붙여넣음!
+    // [검증] return을 해주지 않으면, 모두 입력해달라는 알람이 뜨고도 빈 카드를 그대로 붙여넣음!
     if (title.trim() === "" || content.trim() === "") {
       alert("제목과 내용을 모두 입력해주세요.");
       setTitle("");
@@ -27,9 +22,11 @@ const SubmitForm = () => {
       return;
     }
 
+    event.preventDefault();
+
     dispatch(
       addTodo({
-        id: uuidv4(),
+        id: uuid(),
         title,
         content,
         isDone: false,

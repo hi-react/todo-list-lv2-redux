@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const TodoList = ({ isDone }) => {
   // store에서 todo 데이터 가져오기
   const { todo } = useSelector((state) => state.todo);
+
   const dispatch = useDispatch();
 
   return (

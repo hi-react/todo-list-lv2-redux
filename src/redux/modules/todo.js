@@ -1,11 +1,11 @@
-import { v4 as uuidv4 } from "uuid";
+import uuid from "react-uuid";
 
 // action value
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
 const STATE_CHANGE_TODO = "STATE_CHANGE_TODO";
 
-// action creator
+// action creator -> action.payload 받아와서 {구조 분해 할당}
 export const addTodo = ({ id, title, content }) => {
   return {
     type: ADD_TODO,
@@ -32,13 +32,13 @@ export const stateChangeTodo = (id) => {
 const initialState = {
   todo: [
     {
-      id: uuidv4(),
+      id: uuid(),
       title: "리액트 강의보기",
       content: "챕터 1부터 챕터 12까지 학습",
       isDone: false,
     },
     {
-      id: uuidv4(),
+      id: uuid(),
       title: "점심 먹기",
       content: "점심 뭐먹지..?",
       isDone: false,
@@ -46,7 +46,7 @@ const initialState = {
   ],
 };
 
-// reducer
+// reducer -> action 객체 안에 type과 payload!
 const todo = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_TODO:

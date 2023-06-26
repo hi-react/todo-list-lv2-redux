@@ -8,7 +8,8 @@ function DetailPage() {
   // store에서 todo 데이터 가져오기
   const { todo } = useSelector((state) => state.todo);
 
-  // Router에서 URL parameter인 id값 가져오기
+  // Router에서 URL parameter인 id값 가져오기 -> TodoList 컴포넌트의 <Link>에서 id 값을 담아 보내줌
+  // params 콘솔 찍으면, {id: 10392813} 이런 형태
   const params = useParams();
 
   // todo 돌면서 params로 가져온 id값에 해당하는 todo 찾기(find 메서드)
@@ -25,7 +26,7 @@ function DetailPage() {
             to="/"
             style={{
               textDecoration: "none",
-              color: "#5b92dc;",
+              color: "#5b92dc",
             }}
           >
             이전으로
